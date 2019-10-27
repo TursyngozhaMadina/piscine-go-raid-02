@@ -14,9 +14,9 @@ func main() {
 		sudoku := [9][9]rune{}
 		revsudoku := [9][9]rune{}
 		sudoku = FillSudoku(sudoku, args)
-		revsudoku = FillSudoku(revsudoku, args)
 
 		if SolveSudoku(&sudoku) {
+			revsudoku = FillSudoku(revsudoku, args)
 			ReverseSolveSudoku(&revsudoku)
 		}
 
@@ -137,7 +137,6 @@ func SolveSudoku(sudoku *[9][9]rune) bool {
 						if SolveSudoku(sudoku) {
 							return true
 						}
-						sudoku[y][x] = '.'
 					}
 					sudoku[y][x] = '.'
 				}
@@ -164,7 +163,6 @@ func ReverseSolveSudoku(revsudoku *[9][9]rune) bool {
 						if ReverseSolveSudoku(revsudoku) {
 							return true
 						}
-						revsudoku[y][x] = '.'
 					}
 					revsudoku[y][x] = '.'
 				}
